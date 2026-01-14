@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import connectDB from './config/db.js';
+// import connectDB from './config/db.js';
 import 'dotenv/config.js';
 import authRoutes from './routes/auth_route.js';
 import mongoose from 'mongoose';
@@ -21,7 +21,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
-connectDB();
 app.use(cors({
   origin: "*",
   credentials: true
