@@ -4,16 +4,17 @@ import cors from 'cors';
 import 'dotenv/config';
 import authRoutes from './routes/auth_route.js';
 import mongoose from 'mongoose';
+import connectDB from './config/db.js';
 
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL);
+// mongoose.connect(process.env.MONGO_URL);
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.once('open', () => {
+//   console.log('Connected to MongoDB');
+// });
 
 
 
@@ -21,6 +22,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
+connectDB();
 app.use(cors({
   origin: "*",
   credentials: true
