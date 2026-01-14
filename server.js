@@ -14,14 +14,14 @@ import connectDB from './config/db.js';
 // db.once('open', () => {
 //   console.log('Connected to MongoDB');
 // });
-
+connectDB();
 
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
-connectDB();
+
 app.use(cors({
   origin: "*",
   credentials: true
