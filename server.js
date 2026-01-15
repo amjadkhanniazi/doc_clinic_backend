@@ -5,6 +5,8 @@ import authRoutes from './routes/auth_route.js';
 import connectDB from './config/db.js';
 import doctorsRoutes from './routes/doctors_route.js';
 import patientRoutes from './routes/patient_route.js';
+import bookingsRoutes from './routes/bookings_route.js';
+import medical_record from './routes/medical_record.js';
 
 connectDB();
 
@@ -21,9 +23,11 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/doctors', doctorsRoutes);
 app.use('/api/patients', patientRoutes);
+app.use('/api/bookings', bookingsRoutes);
+app.use('/api/medical_records', medical_record);
 
- export default app;
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, ()=>{
-//     console.log(`Server is running on port ${PORT}`);
-// });
+// export default app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, ()=>{
+    console.log(`Server is running on port ${PORT}`);
+});

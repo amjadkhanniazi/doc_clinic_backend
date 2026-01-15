@@ -181,6 +181,257 @@ npm run start
 
 ---
 
+## 📅 Bookings / Appointments Endpoints (Protected Routes)
+
+> ⚠️ All booking routes require a valid JWT token in the `Authorization` header.
+
+| Method | Endpoint          | Description                        |
+| ------ | ----------------- | ---------------------------------- |
+| POST   | /api/bookings/new | Create a new booking / appointment |
+
+#### Req Data
+
+--> {
+"patient_id": "697123abc",
+"appointment_date": "2026-01-20",
+"appointment_time": "10:30",
+"duration_minutes": 30,
+"status": "scheduled",
+"reason_for_visit": "General checkup",
+"notes": "First time visit"
+}
+
+#### Res Data
+
+--> {
+"_id": "698xyz...",
+"patient_id": "697123abc",
+"doctor_id": "6967712fc00a47eef409236c",
+"appointment_date": "2026-01-20",
+"appointment_time": "10:30",
+"duration_minutes": 30,
+"status": "scheduled",
+"reason_for_visit": "General checkup",
+"notes": "First time visit",
+"created_at": "2026-01-15T09:30:00.000Z"
+}
+
+---
+
+| Method | Endpoint                       | Description                   |
+| ------ | ------------------------------ | ----------------------------- |
+| GET    | /api/bookings/doctor/:doctorId | Get all bookings for a doctor |
+
+#### Req Data
+
+--> id of doctor
+
+#### Res Data
+
+--> [
+{
+"_id": "698xyz...",
+"patient_id": "697123abc",
+"appointment_date": "2026-01-20",
+"appointment_time": "10:30",
+"status": "scheduled"
+}
+]
+
+---
+
+| Method | Endpoint                        | Description                   |
+| ------ | ------------------------------- | ----------------------------- |
+| PATCH  | /api/bookings/update/:bookingId | Update booking status / notes |
+
+#### Req Data
+
+--> {
+"status": "completed",
+"notes": "Patient consulted successfully"
+}
+
+#### Res Data
+
+--> {
+"_id": "698xyz...",
+"status": "completed",
+"notes": "Patient consulted successfully",
+"updated_at": "2026-01-15T10:00:00.000Z"
+}
+
+---
+
+| Method | Endpoint                        | Description      |
+| ------ | ------------------------------- | ---------------- |
+| DELETE | /api/bookings/delete/:bookingId | Delete a booking |
+
+#### Req Data
+
+--> id of booking
+
+#### Res Data
+
+--> {"message": "Booking deleted successfully"}
+
+---
+
+## 🏥 Medical Records Endpoints (Protected Routes)
+
+> ⚠️ All medical record routes require a valid JWT token in the `Authorization` header.
+
+| Method | Endpoint                  | Description              |
+| ------ | ------------------------- | ------------------------ |
+| POST   | /api/medical_records/new   | Create a new medical record |
+
+#### Req Data
+
+--> {
+  "patient_id": "697123abc",
+  "booking_id": "698xyz...",
+  "diagnosis": "Common cold with mild fever",
+  "treatment_plan": "Rest and hydration, take prescribed medications",
+  "prescriptions": [
+    {
+      "medication_name": "Paracetamol",
+      "dosage": "500mg",
+      "frequency": "Three times a day",
+      "duration": "5 days"
+    }
+  ]
+}
+
+#### Res Data
+
+--> {
+  "_id": "699abc...",
+  "patient_id": "697123abc",
+  "doctor_id": "6967712fc00a47eef409236c",
+  "booking_id": "698xyz...",
+  "diagnosis": "Common cold with mild fever",
+  "treatment_plan": "Rest and hydration, take prescribed medications",
+  "prescriptions": [
+    {
+      "medication_name": "Paracetamol",
+      "dosage": "500mg",
+      "frequency": "Three times a day",
+      "duration": "5 days"
+    }
+  ],
+  "created_at": "2026-01-15T09:30:00.000Z"
+}
+
+---
+
+| Method | Endpoint                                | Description                           |
+| ------ | --------------------------------------- | ------------------------------------- |
+| GET    | /api/medical_records/patient/:patientId  | Get all medical records for a patient |
+
+#### Req Data
+
+--> id of patient
+
+#### Res Data
+
+--> [
+  {
+    "_id": "699abc...",
+    "patient_id": "697123abc",
+    "doctor_id": "6967712fc00a47eef409236c",
+    "booking_id": "698xyz...",
+    "diagnosis": "Common cold with mild fever",
+    "treatment_plan": "Rest and hydration",
+    "prescriptions": [...],
+    "created_at": "2026-01-15T09:30:00.000Z"
+  }
+]
+
+---
+
+| Method | Endpoint                            | Description                  |
+| ------ | ----------------------------------- | ---------------------------- |
+| GET    | /api/medical_records/:recordId       | Get a specific medical record by ID |
+
+#### Req Data
+
+--> id of medical record
+
+#### Res Data
+
+--> {
+  "_id": "699abc...",
+  "patient_id": "697123abc",
+  "doctor_id": "6967712fc00a47eef409236c",
+  "booking_id": "698xyz...",
+  "diagnosis": "Common cold with mild fever",
+  "treatment_plan": "Rest and hydration",
+  "prescriptions": [...],
+  "created_at": "2026-01-15T09:30:00.000Z"
+}
+
+---
+
+| Method | Endpoint                            | Description              |
+| ------ | ----------------------------------- | ------------------------ |
+| PATCH  | /api/medical_records/update/:recordId | Update a medical record |
+
+#### Req Data
+
+--> {
+  "diagnosis": "Common cold - recovered",
+  "treatment_plan": "Continue rest for 2 more days",
+  "prescriptions": [
+    {
+      "medication_name": "Vitamin C",
+      "dosage": "1000mg",
+      "frequency": "Once a day",
+      "duration": "7 days"
+    }
+  ]
+}
+
+#### Res Data
+
+--> {
+  "_id": "699abc...",
+  "patient_id": "697123abc",
+  "doctor_id": "6967712fc00a47eef409236c",
+  "diagnosis": "Common cold - recovered",
+  "treatment_plan": "Continue rest for 2 more days",
+  "prescriptions": [...],
+  "updated_at": "2026-01-16T10:00:00.000Z"
+}
+
+---
+
+| Method | Endpoint                            | Description              |
+| ------ | ----------------------------------- | ------------------------ |
+| DELETE | /api/medical_records/delete/:recordId | Delete a medical record |
+
+#### Req Data
+
+--> id of medical record
+
+#### Res Data
+
+--> {"message": "Medical Record deleted successfully"}
+
+---
+
+| Method | Endpoint                                                           | Description                         |
+| ------ | ------------------------------------------------------------------ | ----------------------------------- |
+| DELETE | /api/medical_records/:recordId/prescription/:prescriptionIndex      | Delete a prescription from a record |
+
+#### Req Data
+
+--> id of medical record and index of prescription (0, 1, 2, etc.)
+
+#### Res Data
+
+--> {"message": "Prescription deleted successfully"}
+
+---
+
 ## 🤝 Contributing
 
 Pull requests are welcome.
@@ -190,6 +441,5 @@ Pull requests are welcome.
 ## 🧑‍💻 Author
 
 **Amjad Khan**
-amjadkhanniazi010@gmail.com
 
 ---

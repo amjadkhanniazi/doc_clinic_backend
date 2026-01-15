@@ -29,7 +29,8 @@ const bookingSchema = new mongoose.Schema({
         enum: ['Scheduled', 'Completed', 'Cancelled']
     },
     reason_for_visit: {
-        type: String
+        type: String,
+        minlength: 20
     },
     notes: {
         type: String
