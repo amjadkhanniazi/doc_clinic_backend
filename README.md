@@ -84,7 +84,17 @@ npm run start
 
 #### Res Data
 
---> {}
+--> { "_id": "6967712fc00a47eef409236c",
+    "first_name": "amjad",
+    "last_name": "niazi",
+    "specialization": "Cardiologist",
+    "phone": "+92-3244217097",
+    "email": "amjad@example.com",
+    "licence_number": "LIC-987655",
+    "is_active": true,
+    "created_at": "2026-01-14T10:34:23.473Z",
+    "updated_at": "2026-01-14T10:35:01.406Z"
+    }
 
 | Method | Endpoint                       | Description   |
 | ------ | ------------------------------ | ------------- |
@@ -157,7 +167,27 @@ npm run start
 
 #### Res Data
 
---> {}
+--> {
+  "_id": "696885475ebee0796d868817",
+    "first_name": "Amjad",
+    "last_name": "Khan",
+    "date_of_birth": "1998-06-15T00:00:00.000Z",
+    "gender": "Male",
+    "phone": "+92-300-1234567",
+    "email": "amjad.khan@example.com",
+    "address": "House 12, Street 5, Model Town",
+    "city": "Lahore",
+    "state": "Punjab",
+    "zip_code": "54000",
+    "emergency_contact_name": "Ali Khan",
+    "emergency_contact_phone": "+92-301-7654321",
+    "allergies": [
+        "Peanuts"
+    ],
+    "created_at": "2026-01-15T06:12:23.633Z",
+    "updated_at": "2026-01-15T06:12:23.633Z",
+    "__v": 0
+    }
 
 ---
 
