@@ -26,8 +26,8 @@ app.use('/api/patients', patientRoutes);
 app.use('/api/bookings', bookingsRoutes);
 app.use('/api/medical_records', medical_record);
 
-export default app;
+ export default app;
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, ()=>{
-//     console.log(`Server is running on port ${PORT}`);
+//     console.log(`http://localhost:${PORT}`);
 // });

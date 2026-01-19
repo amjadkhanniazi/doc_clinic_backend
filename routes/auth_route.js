@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
         res.status(201).json({ message: 'Doctor registered successfully' });
     }
     catch (error) {
-        console.log("catch block in register route started");
+        console.log("catch block in register route started");   
         res.status(500).json({ message: 'Server Error', error: error.message });
     }
 });
@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
         const isMatch = await newUser.comparePassword(password);
         if(!isMatch) return res.status(400).json({message: 'Invalid Credentials'});
         const token = newUser.getToken();
-        res.json({ token });
+        res.json({'token': token, 'id': newUser._id });
     }
     catch (error){
         res.status(500).json({ message: 'Server Error', error: error.message });
