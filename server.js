@@ -9,10 +9,17 @@ import bookingsRoutes from './routes/bookings_route.js';
 import medical_record from './routes/medical_record.js';
 
 const app = express();
+const globalLimiter = rateLimit({
+  windowMs: 60 * 1000,      // 1 minute
+  max: 300,                 // allow 300 requests per IP per minute (tune this)
+  message: "Too many requests, please try again later.",
+});
+
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(globalLimiter);
 app.use(
   cors({
     origin: '*',
