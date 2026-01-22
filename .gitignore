@@ -1,6 +1,6 @@
 # Node modules
 node_modules/
-
+limittest.py
 # Environment variables
 .env
 .env.local

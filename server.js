@@ -17,7 +17,7 @@ const app = express();
 /* -------------------- RATE LIMIT (SERVERLESS SAFE) -------------------- */
 const globalLimiter = rateLimit({
   windowMs: 60 * 1000,      // 1 minute
-  max: 100,                // tune as needed
+  max: 50,                // tune as needed
   standardHeaders: true,
   legacyHeaders: false,
 });
