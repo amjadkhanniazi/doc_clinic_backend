@@ -11,7 +11,7 @@ import medical_record from './routes/medical_record.js';
 const app = express();
 const globalLimiter = rateLimit({
   windowMs: 60 * 1000,      // 1 minute
-  max: 300,                 // allow 300 requests per IP per minute (tune this)
+  max: 100,                 // allow 300 requests per IP per minute (tune this)
   message: "Too many requests, please try again later.",
 });
 
