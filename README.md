@@ -538,21 +538,20 @@ GET /api/bookings/doctor/6967712fc00a47eef409236c
 **Response:**
 ```json
 [
-  {
-    "_id": "698xyz...",
-    "patient_id": {
-      "_id": "697123abc",
-      "first_name": "Ali",
-      "last_name": "Khan"
-    },
-    "doctor_id": "6967712fc00a47eef409236c",
-    "appointment_date": "2026-01-20",
-    "appointment_time": "10:30",
-    "duration_minutes": 30,
-    "status": "scheduled",
-    "reason_for_visit": "General checkup",
-    "created_at": "2026-01-15T09:30:00.000Z"
-  }
+    {
+        "_id": "6968ad4db7bd3f5816e56944",
+        "patient_id": "696885475ebee0796d868817",
+        "doctor_id": "6967712fc00a47eef409236c",
+        "appointment_date": "2026-01-20T00:00:00.000Z",
+        "appointment_time": "2026-01-20T14:30:00.000Z",
+        "duration_minutes": 30,
+        "status": "Scheduled",
+        "reason_for_visit": "Regular health checkup",
+        "notes": "Patient requested afternoon appointment",
+        "created_at": "2026-01-15T09:03:09.514Z",
+        "updated_at": "2026-01-15T09:03:09.514Z",
+        "__v": 0
+    }
 ]
 ```
 
@@ -726,28 +725,37 @@ GET /api/medical_records/patient/697123abc
 **Response:**
 ```json
 [
-  {
-    "_id": "699abc...",
-    "patient_id": "697123abc",
-    "doctor_id": {
-      "_id": "6967712fc00a47eef409236c",
-      "first_name": "John",
-      "last_name": "Doe",
-      "specialization": "Cardiologist"
-    },
-    "booking_id": "698xyz...",
-    "diagnosis": "Common cold with mild fever",
-    "treatment_plan": "Rest and hydration",
-    "prescriptions": [
-      {
-        "medication_name": "Paracetamol",
-        "dosage": "500mg",
-        "frequency": "Three times a day",
-        "duration": "5 days"
-      }
-    ],
-    "created_at": "2026-01-15T09:30:00.000Z"
-  }
+    {
+        "_id": "6969dd189886a3a40dba20c4",
+        "patient_id": "696885475ebee0796d868817",
+        "doctor_id": "6967712fc00a47eef409236c",
+        "booking_id": "6968ad4db7bd3f5816e56944",
+        "diagnosis": "Acute throat infection",
+        "treatment_plan": "Rest and medication",
+        "prescriptions": [
+            {
+                "medication_name": "Amoxicillin",
+                "dosage": "500mg",
+                "frequency": "Twice a day",
+                "duration": "7 days",
+                "instructions": "After meals",
+                "start_date": "2026-01-15T00:00:00.000Z",
+                "end_date": "2026-01-22T00:00:00.000Z"
+            },
+            {
+                "medication_name": "Paracetamol",
+                "dosage": "650mg",
+                "frequency": "As needed",
+                "duration": "5 days",
+                "instructions": "Only if fever",
+                "start_date": "2026-01-15T00:00:00.000Z",
+                "end_date": "2026-01-20T00:00:00.000Z"
+            }
+        ],
+        "created_at": "2026-01-16T06:39:20.760Z",
+        "updated_at": "2026-01-16T06:39:20.760Z",
+        "__v": 0
+    }
 ]
 ```
 
